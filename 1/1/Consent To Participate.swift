@@ -42,7 +42,7 @@ class Consent_To_Participate: UIViewController {
         
         scrollView.contentSize = CGSizeMake(self.view.frame.width, 650)
         
-        label1.text = "I have read all the information provided in the last two screens"
+        label1.text = "I have read all the information provided in the last couple of screens"
         
         label2.text = "Participation is voluntary and I can stop answering at any given time."
         

@@ -78,15 +78,20 @@ class hasAnythingDivertedYourAttention: UIViewController {
         }
     } */
     
-    @IBAction func nextPressed(sender: UIBarButtonItem) {
+    @IBAction func nextPressed(sender: UIBarButtonItem)
+    {
         var durationTime : [String : String]
         let sampleRef = ref.childByAppendingPath("Users").childByAppendingPath(userData.stringForKey(Keys.UID)).childByAppendingPath("Samples").childByAppendingPath(userData.stringForKey(Keys.SAMPLENO)).childByAppendingPath("AttentionDiverted")
-        if (duration.hidden == false) {
+        if (duration.hidden == false)
+        {
             durationTime = ["Diverted" : "\(slide.value) minutes"]
             var distractionCount = userData.objectForKey(Keys.DISTRACTEDCOUNT) as! [Int]
-            for var i=0;i<distractionCount.count;i++
+            if posDistracted.count>=1
             {
-                distractionCount[i] += posDistracted[i]
+                for var i=0;i<distractionCount.count;i++
+                {
+                    distractionCount[i] += posDistracted[i]
+                }
             }
             userData.setObject(distractionCount, forKey: Keys.DISTRACTEDCOUNT)
             sampleRef.updateChildValues(durationTime)
@@ -98,7 +103,5 @@ class hasAnythingDivertedYourAttention: UIViewController {
             performSegueWithIdentifier("ifNo", sender: self)
             
         }
-        
     }
-
 }

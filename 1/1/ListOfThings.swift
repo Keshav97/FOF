@@ -15,9 +15,9 @@ var posDistracted = [Int]()
 //var updatedCount = [Int]()
 class ListOfThings: UITableViewController {
     
-    var over18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying", "Intimate relations", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying/meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household admin", "Travelling"]
+    var over18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying", "Intimate relations", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying or meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household admin", "Travelling"]
     
-    var below18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program or podcast", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying/ homework", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying/meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household chores", "Travelling"]
+    var below18 = ["Resting or sleeping", "Walking", "Watching TV, film, online videos", "News watching", "Listening to music", "Listening to a radio program or podcast", "Gaming", "Playing board games", "Childcare", "Playing Sport", "Working", "Studying or homework", "Exercising", "Eating", "Reading (books, paper, online)", "Cooking", "Praying/meditating", "Online Chatting", "Email", "Surfing the net", "Engaging with family member", "Engaging with friends", "Shopping, running errands", "Household chores", "Travelling"]
     
     var boolArray = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
@@ -60,21 +60,24 @@ class ListOfThings: UITableViewController {
             var tableData = [String : String]()
             var updatedCount = userData.objectForKey(Keys.ACTIVITYCOUNT) as! [Int]
             var updatedFocus = userData.objectForKey(Keys.ACTIVITYFOCUSLEVEL) as! [Int]
-            for var i = 0; i<finalArray.count;i++
+            if boolArray.count>=1
             {
-                
-                if (boolArray[i])
+                for var i = 0; i<finalArray.count;i++
                 {
-                    tableData.updateValue("\(boolArray[i])", forKey: "\(finalArray[i])")
-                    updatedCount[i]++
-                    updatedFocus[i] += focus!
-                    posDistracted.append(1)
+                    if(boolArray.count>i) {
+                        if (boolArray[i])
+                        {
+                            tableData.updateValue("\(boolArray[i])", forKey: "\(finalArray[i])")
+                            updatedCount[i]++
+                            updatedFocus[i] += focus!
+                            posDistracted.append(1)
+                        }
+                        else
+                        {
+                            posDistracted.append(0)
+                        }
+                    }
                 }
-                else
-                {
-                    posDistracted.append(0)
-                }
-            
             }
             userData.setObject(updatedCount, forKey: Keys.ACTIVITYCOUNT)
             userData.setObject(updatedFocus, forKey: Keys.ACTIVITYFOCUSLEVEL)

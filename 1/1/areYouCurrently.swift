@@ -13,9 +13,9 @@ class areYouCurrently: UIViewController, UITableViewDelegate, UITextViewDelegate
 
     @IBOutlet weak var other: UITextView!
     
-    var over18 = ["Alone", "With friends", "With family", "With partner/significant other", "On a date", "With children", "With colleagues", "Other - please specify"]
+    var over18 = ["Alone", "With friends", "With family", "With partner or significant other", "On a date", "With children", "With colleagues", "Other - please specify"]
    
-     var below18 = ["Alone", "With friends", "With family", "With partner/significant other", "On a date", "Other - please specify"]
+     var below18 = ["Alone", "With friends", "With family", "With partner or significant other", "On a date", "Other - please specify"]
     
     var boolArray: [Bool] = []
     

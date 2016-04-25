@@ -92,17 +92,22 @@ class LogIn: UIViewController, UITextFieldDelegate {
                 {
                     error, authData in
                     if error != nil {
-                        //UID = authData.uid;
                         let alert = UIAlertController(title: "Error in Form ", message: "Please enter a valid email and password.", preferredStyle: UIAlertControllerStyle.Alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action)  -> Void in
-                            
                             //self.dismissViewControllerAnimated(true, completion: nil)
-                            
                         }))
                         self.presentViewController(alert, animated: true, completion: nil)
-                        
                     }
                     else {//see what data will we need
+                        UID = authData.uid
+                        userData.setObject(authData.uid!, forKey: Keys.UID)
+                        print ("User ID = \(authData.uid!)")
+                        EMAIL = self.email.text!
+                        userData.setObject(self.email.text!, forKey: Keys.EMAIL)
+                        //userData.synchronize();
+                        PASSWORD = self.password.text!
+                        userData.setObject(self.password.text!, forKey: Keys.PASSWORD)
+                        
                         self.performSegueWithIdentifier("LogInToHome", sender: sender)
                     }
                     
